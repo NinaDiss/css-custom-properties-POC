@@ -20,6 +20,12 @@ html {
   margin-top: 120px;
 }
 
+.subtitle {  
+  color: var(--text-color);
+  font-size: 24px;
+  margin: 48px 0 18px;
+}
+
 .button {
   background-color: var(--btn-bg-color, var(--text-color));
   border-radius: 24px;
@@ -85,12 +91,10 @@ html {
 
 .svg-colors {
   svg {
-    margin-top: 48px;
     max-width: 120px;
   }
 
   .text {
-    margin-top: 20px;
     position: relative;
 
 
@@ -103,6 +107,10 @@ html {
       width: 30px;
     }
   }
+}
+
+.img-tag {
+  width: 120px;
 }
 
 .icon-list {
