@@ -1,3 +1,2 @@
 import "./index.scss";
-
-// Starter
+import "./variables.scss";

@@ -1,3 +1,137 @@
 @import 'the-new-css-reset/css/reset.css';
 
-// Starter
+html {
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  align-items: center;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 32px;
+}
+
+.title {
+  color: var(--text-color); // colors needs to be specified in this class so it can be overriden for the "Event theme"
+  font-size: 48px;
+  margin-top: 120px;
+}
+
+.button {
+  background-color: var(--btn-bg-color, var(--text-color));
+  border-radius: 24px;
+  color: var(--btn-text-color);
+  margin-top: 40px;
+  padding: 16px 24px;
+}
+
+.event-theme {
+  --bg-color: hsl(10, 50%, 93%);
+  --text-color: hsl(10, 50%, 53%);
+  --btn-bg-color: hsl(10, 50%, 66%);
+  --btn-text-color: hsl(0, 0%, 100%);
+
+  // color: var(--text-color); // Need to update html's color property if not specified for .title
+}
+
+// HSL test
+.hsl-button {
+  --h: 100;
+  --s: 50%;
+  --l: 50%;
+  --a: 1;
+
+  .button {
+    background-color: hsl(var(--h) var(--s) var(--l) / var(--a));
+  }
+  
+  .button:hover:not([disabled]) {
+    --l: 75%;
+  }
+  
+  .button:focus {
+    --s: 75%;
+  }
+  
+  .button[disabled] {
+    --s: 0%;
+    --a: 0.5; // Can be problematic if several properties have alpha values 
+  }
+}
+
+.shorthand-properties {
+  .button {
+    --spread: 3px;
+    box-shadow: 0 0 20px var(--spread) var(--black);
+  }
+      
+  .button:hover {
+    --spread: 10px;
+  }
+}
+
+// Doesn't work with Sass
+// .button {
+//   $spread: 5px;
+//   box-shadow: 0 0 20px $spread blue;
+// }
+  
+// .button:hover {
+//   $spread: 40px;
+// }
+
+.svg-colors {
+  svg {
+    margin-top: 48px;
+    max-width: 120px;
+  }
+
+  .text {
+    margin-top: 20px;
+    position: relative;
+
+
+    &::before {
+      background: no-repeat url('../images/picto_external_link.svg');
+      content: '';
+      height: 30px;
+      left: -40px;
+      position: absolute;
+      width: 30px;
+    }
+  }
+}
+
+.icon-list {
+  --tilde: '~';
+  --star: '*';
+  --hyphen: '-';
+  
+  list-style: none;
+  margin-top: 21px;
+}
+
+.icon-list li::before {
+  color: var(--icon-color, '_'); // Use fallback values in case the css propertie is not set for .icon-list
+  content: var(--icon, '--text-color');
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.tilde-list {
+  --icon: var(--tilde);
+  --icon-color: rgb(183, 189, 6);
+}
+  
+.star-list {
+  --icon: var(--star);
+  --icon-color: rgb(114, 4, 56);
+}
+  
+.hyphen-list {
+  --icon: var(--hyphen);
+  --icon-color: rgb(6, 155, 53);
+}
