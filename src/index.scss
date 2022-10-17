@@ -34,7 +34,7 @@ html {
   padding: 16px 24px;
 }
 
-.event-theme {
+.container[data-theme='event-theme'] {
   --bg-color: hsl(10, 50%, 93%);
   --text-color: hsl(10, 50%, 53%);
   --btn-bg-color: hsl(10, 50%, 66%);

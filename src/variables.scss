@@ -5,9 +5,32 @@
   --btn-text-color: hsl(0, 0%, 100%);
 
   --black: hsl(0, 0%, 0%);
-  --c-primary: hsl(200, 100%, 63%);
-}
+  --white: hsl(0, 0%, 100%);
 
+  --c-primary: hsl(200, 100%, 63%);
+
+  // Opacity definition
+  // Sets variables --c-primary-15a, --c-primary-30a, --c-primary-50a, --c-primary-75a
+  @each $alpha-step in (15,30,50,75) {
+    --c-primary-#{$alpha-step}a: hsl(200, 100%, 63%, 0.#{$alpha-step});
+  }
+
+  // --c-primary-15: mix(--c-primary, --white, 15%); // Not working
+  // --c-primary-15: lighten(--c-primary, 15%); // Not working
+
+  // How to lighten color without sass functions ?
+  $lightnesses: (
+    '15': '95%',
+    '30': '89%',
+    '50': '82%',
+    '75': '73%'
+  );
+  
+  // Sets variables --c-primary-15, --c-primary-30, --c-primary-50, --c-primary-75
+  @each $name, $lightness in $lightnesses {
+    --c-primary-#{$name}: hsl(200, 100%, #{$lightness});
+  }
+}
 
 @media (prefers-contrast: high) {
   :root {
